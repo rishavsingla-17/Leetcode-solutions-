@@ -1,0 +1,7 @@
+class Solution(object):
+    def largestAltitude(self, gain):
+        highest = sum = 0
+        for i in range(0,len(gain)):
+            sum += gain[i]
+            highest = max(highest,sum)
+        return highest
