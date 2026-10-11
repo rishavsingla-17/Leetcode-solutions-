@@ -1,0 +1,36 @@
+In this we have to find out quaduple means array of 4 elements  which is equal to our target so brute force is 4 nested loops which
+has much time complexity so optimal is that we use 4 pointer technique and we sort our array first  one pointer i,j is increased till
+they gets diff value while other 2 moves i is at first index of 0 j is at next to i and k is at next to j and l is at end  first we check
+sum of these four is it is matched to target we add it to answer list and moves kahead by 1 and decrease l by 1 if k is same as its previous
+value we increase k till we gets new value and same with other  pointers 
+class Solution(object):
+    def fourSum(self, nums, target):
+        nums.sort()
+        ans= []
+        n = len(nums)
+        if n < 4:
+            return []
+        for i in range(0,n):
+            if i > 0 and nums[i] == nums[i-1]:
+                continue
+            for j in range(i+1,n):
+                if j > i+1 and nums[j] == nums[j-1]:
+                    continue
+                k = j+1
+                l = n-1
+                while l > k:
+                    total = nums[i]+nums[j]+nums[k]+nums[l]
+                    if total == target:
+                        ans.append([nums[i],nums[j],nums[k],nums[l]])
+                        k += 1
+                        l -= 1
+                        while k<l and nums[k] == nums[k-1]:
+                            k += 1
+                        while l > k and nums[l] == nums[l+1]:
+                            l -=1
+                    elif total > target:
+                        l -= 1
+                    else:
+                        k += 1
+        return ans
+        
