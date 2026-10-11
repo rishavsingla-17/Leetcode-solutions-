@@ -1,0 +1,12 @@
+class Solution:
+    def longestCommonPrefix(self, strs):
+        pref = strs[0]
+        pref_len = len(pref)
+
+        for s in strs[1:]:
+            while pref != s[0:pref_len]:
+                pref_len -= 1
+                if pref_len == 0:
+here is my code for that problme in this first i assume that first word of string is a logest common prefx then i start a loop till
+length of string is 0 and upper loop is run till no.of words in string then i compare my longest common prefix with next word and 
+calculate longest common prefix
