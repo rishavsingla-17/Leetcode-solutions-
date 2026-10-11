@@ -1,0 +1,15 @@
+here is code for my solution but the appraoch is that i run backward loop and access last digit of array if after adding 1 to that
+digit makes not 10 like 3+1 = 4 then return whole array with adding of one but if it makes 10 and last digit beocmes 0 and if that
+element is last element of array then this return 1 + digits but if digits[i] == 0 fails then upper loop runs and i got my output
+class Solution(object):
+    def plusOne(self, digits):
+        n = len(digits)
+        for i in range(n-1,-1,-1):
+            if digits[i] + 1 != 10:
+                digits[i] += 1
+                return digits
+            digits[i] = 0
+            if i == 0:
+                return [1] + digits
+
+        
