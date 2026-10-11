@@ -1,0 +1,32 @@
+In this we have to find out triplet which is equal to our target so brute force is 3 nested loops which has too much time complexity 
+so optimal is that we use 3 pointer technique and we sort our array first  one pointer i is fixes while other 2 moves i is at first 
+index of 0 j is at next to i and k is at end first we check sum of these three is it is matched to target we add it to answer list 
+and moves j ahead by 1 and decrease k by 1 if j is same as its previous value we increase j till we gets new value and same with other 
+2 pointers 
+class Solution(object):
+    def threeSum(self, nums):
+        ans = []
+        n = len(nums)
+        nums.sort()
+        for i in range(0,n):
+            if(i != 0 and nums[i] == nums[i-1]):
+                continue
+            j = i+1
+            k = n-1
+
+            while j<k:
+                total_sum = nums[i]+nums[j]+nums[k]
+                if total_sum < 0:
+                    j +=1
+                elif total_sum > 0:
+                    k -= 1
+                else:
+                    temp = [nums[i],nums[j],nums[k]]
+                    ans.append(temp)
+                    j += 1
+                    k -= 1
+                    while ( j<k and nums[j]==nums[j-1]):
+                        j += 1
+                    while(j<k and nums[k] == nums[k+1]):
+                        k -= 1
+        return ans
